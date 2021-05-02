@@ -27,7 +27,7 @@ def frameExtractor(videopath, frames_path, count, prefix, applyMod):
 
 def generateTrainingData(inputPathName, multiple=False):
     videos = glob.glob(os.path.join(inputPathName, "*.mp4"))
-    frameFolderName = "TrainingData_" + inputPathNameC
+    frameFolderName = "TrainingData_" + inputPathName
     shutil.rmtree(frameFolderName, ignore_errors=True)
     frames_path = os.path.join(frameFolderName)
     if not os.path.exists(frameFolderName):

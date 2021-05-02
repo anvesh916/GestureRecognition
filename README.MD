@@ -17,8 +17,8 @@ spatial.distance.cosine(<test>, <train>)
 Print the output in a results.csv file
 
 # Generate Training Data
-	To generate the training images in 200 by 200 format in a directory based on the labels format
+To generate the training images in 200 by 200 format in a directory based on the labels format
 
 
 # Training & Model Creation
-	Create CNN model with the training data. Then model fit with the test and train data. Save the model to a file.
+Create CNN model with the training data. Then model fit with the test and train data. Save the model to a file.

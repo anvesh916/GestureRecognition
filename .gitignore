@@ -1,0 +1,8 @@
+/venv/
+/frames**
+/TrainingData**
+/traindata
+/test**
+Results.csv
+/.idea
+*.zip

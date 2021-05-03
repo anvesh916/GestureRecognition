@@ -37,11 +37,8 @@ class HandShapeFeatureExtractor:
     @staticmethod
     def __pre_process_input_image(img):
         try:
-
             img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             img = cv2.resize(img, (200, 200))
-            img = (cv2.flip(img, 1) + img)
-            img = cv2.multiply(img, 0.5)
             img = np.array(img) / 255.0
             img_arr = img.reshape(1, 200, 200, 1)
             return img_arr

@@ -26,7 +26,7 @@ def generatePenultimateLayer(inputPathName):
 def frameExtractor(videopath):
     cap = cv2.VideoCapture(videopath)
     video_length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) - 1
-    cap.set(1, int(video_length / 2.5))
+    cap.set(1, int(video_length / 1.6))
     ret, frame = cap.read()
     return frame
 

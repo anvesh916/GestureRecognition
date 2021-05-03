@@ -40,7 +40,7 @@ model.compile(optimizer='adam',
               loss='categorical_crossentropy',
               metrics=['accuracy'])
 
-data_train, data_test, labels_train, labels_test = train_test_split(listImages, labels, test_size=0.30, shuffle=True,
+data_train, data_test, labels_train, labels_test = train_test_split(listImages, labels, test_size=0.20, shuffle=True,
                                                                     random_state=42)
-model.fit(x=data_train, y=labels_train, batch_size=32, epochs=10, shuffle=True, validation_data=(data_test, labels_test))
+model.fit(x=data_train, y=labels_train, batch_size=32, epochs=7, shuffle=True, validation_data=(data_test, labels_test))
 model.save("cnn_new.h5")

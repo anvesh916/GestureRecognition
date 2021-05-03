@@ -28,7 +28,7 @@ def frameExtractor(videopath):
     video_length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) - 1
     cap.set(1, int(video_length / 2))
     ret, frame = cap.read()
-    return cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    return frame
 
 # =============================================================================
 # Get the penultimate layer for training data

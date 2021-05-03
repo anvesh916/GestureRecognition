@@ -77,13 +77,11 @@ class HandShapeFeatureExtractor:
     def extract_feature(self, image):
         try:
             img_arr = self.__pre_process_input_image(image)
-            # input = tf.keras.Input(tensor=image)
             outputs = []
             for layer in self.model.layers:
                 keras_function = K.function([self.model.input], [layer.output])
                 outputs.append(keras_function([img_arr, 1]))
-            # print(outputs)
-            return outputs[6]
+            return outputs[10]
         except Exception as e:
             raise
 

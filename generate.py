@@ -14,7 +14,7 @@ def frameExtractor(videopath, frames_path, count, prefix, applyMod):
     video_length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) - 1
     start = int(video_length * 0.5)
     number = 1
-    for i in range(start - 4, start + 4, 1):
+    for i in range(start - 2, start + 2, 1):
         cap.set(1, i)
         ret, img_arr = cap.read()
         img_arr = cv2.resize(img_arr, (200, 200))
@@ -44,3 +44,4 @@ def generateTrainingData(inputPathName, multiple=False):
 
 
 generateTrainingData("test-mine")
+generateTrainingData("traindata")

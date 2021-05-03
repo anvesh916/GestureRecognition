@@ -7,13 +7,14 @@ import glob
 from sklearn.model_selection import train_test_split
 
 model = keras.Sequential(
-    [layers.Conv2D(32, kernel_size=(3, 3), padding="valid", activation='relu', input_shape=[200, 200, 1]),
-     layers.MaxPooling2D(pool_size=(2, 2), padding="valid"),
-     layers.Conv2D(64, kernel_size=(3, 3), padding="valid", activation='relu'),
-     layers.MaxPooling2D(pool_size=(2, 2), padding="valid"),
-     layers.Conv2D(64, kernel_size=(3, 3), padding="valid", activation='relu'),
+    [layers.Conv2D(64, kernel_size=(3, 3), padding="same", activation='relu', input_shape=[200, 200, 1]),
+     layers.MaxPooling2D(pool_size=(2, 2), padding="same"),
+     layers.Conv2D(64, kernel_size=(3, 3), padding="same", activation='relu'),
+     layers.MaxPooling2D(pool_size=(2, 2), padding="same"),
+     layers.Conv2D(64, kernel_size=(3, 3), padding="same", activation='relu'),
      layers.Flatten(),
-     layers.Dense(64, activation='relu'),
+     layers.Dense(128, activation='relu'),
+     layers.Dense(256, activation='relu'),
      layers.Dense(17, activation='softmax')
      ]
 )
@@ -42,5 +43,5 @@ model.compile(optimizer='adam',
 
 data_train, data_test, labels_train, labels_test = train_test_split(listImages, labels, test_size=0.20, shuffle=True,
                                                                     random_state=42)
-model.fit(x=data_train, y=labels_train, batch_size=32, epochs=7, shuffle=True, validation_data=(data_test, labels_test))
+model.fit(x=data_train, y=labels_train, batch_size=32, epochs=10, shuffle=True, validation_data=(data_test, labels_test))
 model.save("cnn_new.h5")

@@ -18,7 +18,7 @@ def frameExtractor(videopath, frames_path, count, prefix, applyMod):
         cap.set(1, i)
         ret, img_arr = cap.read()
         img_arr = cv2.resize(img_arr, (200, 200))
-        img_arr= cv2.cvtColor(img_arr, cv2.COLOR_BGR2GRAY)
+        img_arr = cv2.cvtColor(img_arr, cv2.COLOR_BGR2GRAY)
         img_arr = (cv2.flip(img_arr, 1) + img_arr)
         img_arr = cv2.multiply(img_arr, 0.5)
         cv2.imwrite(saveLocation + "/" + prefix + "%#05d.png" % number, img_arr)
@@ -36,10 +36,11 @@ def generateTrainingData(inputPathName, multiple=False):
     if not os.path.exists(frameFolderName):
         os.makedirs(frameFolderName)
     print("Extracting Frames of " + inputPathName)
+    frames = range(17)
     for i, video in enumerate(videos):
         print(str(video))
-        frameExtractor(video, frames_path, i, str(video.split("\\")[1].split(".mp4")[0]),
+        frameExtractor(video, frames_path, frames[i % 17], str(video.split("\\")[1].split(".mp4")[0]),
                        multiple)
 
 
-generateTrainingData("test-prof")
+generateTrainingData("test-mine")

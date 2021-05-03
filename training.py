@@ -5,6 +5,8 @@ import numpy as np
 import cv2
 import glob
 from sklearn.model_selection import train_test_split
+# from tensorflow.keras import backend as K
+
 
 model = keras.Sequential(
     [layers.Conv2D(64, kernel_size=(3, 3), padding="same", activation='relu', input_shape=[200, 200, 1]),
@@ -42,5 +44,7 @@ model.compile(optimizer='adam',
 
 data_train, data_test, labels_train, labels_test = train_test_split(listImages, labels, test_size=0.50, shuffle=True,
                                                                     random_state=42)
-model.fit(x=data_train, y=labels_train, batch_size=32, epochs=8, shuffle=True, validation_data=(data_test, labels_test))
+model.fit(x=data_train, y=labels_train, batch_size=32, epochs=1, shuffle=True, validation_data=(data_test, labels_test))
+
+
 model.save("cnn_new.h5")

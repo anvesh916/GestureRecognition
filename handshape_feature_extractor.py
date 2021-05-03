@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import tensorflow as tf
+from tensorflow.keras import backend as K
 
 keras = tf.keras
 load_model = keras.models.load_model
@@ -64,12 +65,25 @@ class HandShapeFeatureExtractor:
             x2 = 0
         return y1, y2, x1, x2
 
+    # def extract_feature(self, image):
+    #     try:
+    #         img_arr = self.__pre_process_input_image(image)
+    #         # input = tf.keras.Input(tensor=image)
+    #
+    #         return self.model.predict(img_arr)
+    #     except Exception as e:
+    #         raise
+
     def extract_feature(self, image):
         try:
             img_arr = self.__pre_process_input_image(image)
             # input = tf.keras.Input(tensor=image)
-            return self.model.predict(img_arr)
+            outputs = []
+            for layer in self.model.layers:
+                keras_function = K.function([self.model.input], [layer.output])
+                outputs.append(keras_function([img_arr, 1]))
+            # print(outputs)
+            return outputs[6]
         except Exception as e:
             raise
-
 
